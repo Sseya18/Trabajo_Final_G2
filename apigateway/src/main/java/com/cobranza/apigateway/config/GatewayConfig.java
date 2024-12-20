@@ -13,6 +13,8 @@ public class GatewayConfig {
         return builder.routes()
                 .route("gestion-deudores-route", r -> r.path("/deudores/**")
                         .uri("lb://gestiondeudores-microservices"))
+                .route("gestion-clientes-route", r -> r.path("/clientes/**")
+                        .uri("lb://gestionclientesmicroservicios"))
                 .build();
     }
 }
