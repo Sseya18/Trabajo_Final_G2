@@ -1,0 +1,8 @@
+Inicializar una base de datos con postgres
+docker run --name postgresCobranza -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
+ApiGateway
+localhost:8080
+Microservicios Deudores
+http://localhost:8080/api/v1/deudores
+Microservicios Clientes
+http://localhost:8080/api/v1/clientes
