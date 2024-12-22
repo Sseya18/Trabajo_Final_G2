@@ -5,61 +5,78 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.cobranza.gestiondeudores_microservices.entidades.Deudor;
-import com.cobranza.gestiondeudores_microservices.repositori.DeudorRepository;
+import com.cobranza.gestiondeudores_microservices.entidades.DeudorRequest;
+import com.cobranza.gestiondeudores_microservices.entidades.Operador;
+import com.cobranza.gestiondeudores_microservices.servicios.DeudorService;
+import com.cobranza.gestiondeudores_microservices.servicios.OperadorService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/deudores")
+@RequestMapping("/gestion/deudas/deudores")
 public class DeudorController {
 
     @Autowired
-    private DeudorRepository deudorRepository;
+    private DeudorService deudorService;
+    
+    @Autowired
+    private OperadorService operadorService;
 
     // Obtener todos los deudores
     @GetMapping
     public List<Deudor> obtenerTodos() {
-        return deudorRepository.findAll();
+        return deudorService.getAllDeudores();
     }
 
     // Obtener un deudor por ID
     @GetMapping("/{id}")
     public ResponseEntity<Deudor> obtenerPorId(@PathVariable Long id) {
-        return deudorRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        Deudor deudor = deudorService.getDeudorById(id);
+        if (deudor != null) {
+            return ResponseEntity.ok(deudor);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // Crear un nuevo deudor
     @PostMapping
-    public Deudor crear(@RequestBody Deudor deudor) {
-        return deudorRepository.save(deudor);
+    public ResponseEntity<Deudor> crearDeudor(@RequestBody DeudorRequest deudorRequest) {
+        Operador operador = operadorService.getOperadorById(deudorRequest.getOperadorId());
+        if (operador == null) {
+            return ResponseEntity.badRequest().body(null);
+        }
+
+        Deudor nuevoDeudor = new Deudor();
+        nuevoDeudor.setNombre(deudorRequest.getNombre());
+        nuevoDeudor.setApellido(deudorRequest.getApellido());
+        nuevoDeudor.setTelefono(deudorRequest.getTelefono());
+        nuevoDeudor.setCorreoElectronico(deudorRequest.getCorreoElectronico());
+        nuevoDeudor.setMontoDeuda(deudorRequest.getMontoDeuda());
+        nuevoDeudor.setOperador(operador);
+
+        Deudor deudorGuardado = deudorService.saveDeudor(nuevoDeudor);
+        return ResponseEntity.ok(deudorGuardado);
     }
 
     // Actualizar un deudor
     @PutMapping("/{id}")
     public ResponseEntity<Deudor> actualizar(@PathVariable Long id, @RequestBody Deudor detallesDeudor) {
-        return deudorRepository.findById(id)
-                .map(deudor -> {
-                    deudor.setNombre(detallesDeudor.getNombre());
-                    deudor.setApellido(detallesDeudor.getApellido());
-                    deudor.setTelefono(detallesDeudor.getTelefono());
-                    deudor.setCorreoElectronico(detallesDeudor.getCorreoElectronico());
-                    deudor.setMontoDeuda(detallesDeudor.getMontoDeuda());
-                    deudor.setFechaRegistro(detallesDeudor.getFechaRegistro());
-                    return ResponseEntity.ok(deudorRepository.save(deudor));
-                })
-                .orElse(ResponseEntity.notFound().build());
+        Deudor deudor = deudorService.getDeudorById(id);
+        if (deudor == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        deudor.setNombre(detallesDeudor.getNombre());
+        deudor.setApellido(detallesDeudor.getApellido());
+        deudor.setTelefono(detallesDeudor.getTelefono());
+        deudor.setCorreoElectronico(detallesDeudor.getCorreoElectronico());
+        deudor.setMontoDeuda(detallesDeudor.getMontoDeuda());
+        deudor.setOperador(detallesDeudor.getOperador());
+
+        Deudor deudorActualizado = deudorService.saveDeudor(deudor);
+        return ResponseEntity.ok(deudorActualizado);
+        
     }
 
-    // Eliminar un deudor
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Object> eliminar(@PathVariable Long id) {
-        return deudorRepository.findById(id)
-                .map(deudor -> {
-                    deudorRepository.delete(deudor);
-                    return ResponseEntity.noContent().build();
-                })
-                .orElse(ResponseEntity.notFound().build());
-    }
 }

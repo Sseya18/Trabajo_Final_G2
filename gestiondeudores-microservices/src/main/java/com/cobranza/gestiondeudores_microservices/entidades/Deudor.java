@@ -1,11 +1,13 @@
 package com.cobranza.gestiondeudores_microservices.entidades;
 
-import jakarta.persistence.Column;
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,28 +16,24 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "deudores")
 public class Deudor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nombre", nullable = false)
     private String nombre;
-
-    @Column(name = "apellido", nullable = false)
     private String apellido;
 
-    @Column(name = "telefono")
     private String telefono;
-
-    @Column(name = "correo_electronico", unique = true)
     private String correoElectronico;
-
-    @Column(name = "monto_deuda", nullable = false)
     private Double montoDeuda;
+    private LocalDateTime fechaRegistro;
 
-    @Column(name = "fecha_registro", nullable = false)
-    private String fechaRegistro;
+
+    @ManyToOne
+    @JoinColumn(name = "operador_id")
+    private Operador operador;
+
+    // Getters y setters
 }

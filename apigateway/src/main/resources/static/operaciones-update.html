@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Actualizar cliente</title>
+
+	<!-- Normalize V8.0.1 -->
+	<link rel="stylesheet" href="./css/normalize.css">
+
+	<!-- Bootstrap V4.3 -->
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+
+	<!-- Bootstrap Material Design V4.0 -->
+	<link rel="stylesheet" href="./css/bootstrap-material-design.min.css">
+
+	<!-- Font Awesome V5.9.0 -->
+	<link rel="stylesheet" href="./css/all.css">
+
+	<!-- Sweet Alerts V8.13.0 CSS file -->
+	<link rel="stylesheet" href="./css/sweetalert2.min.css">
+
+	<!-- Sweet Alert V8.13.0 JS file-->
+	<script src="./js/sweetalert2.min.js" ></script>
+
+	<!-- jQuery Custom Content Scroller V3.1.5 -->
+	<link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css">
+	
+	<!-- General Styles -->
+	<link rel="stylesheet" href="./css/style.css">
+
+
+</head>
+<body>
+	
+	<!-- Main container -->
+	<main class="full-box main-container">
+		<!-- Nav lateral -->
+		<section class="full-box nav-lateral">
+			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
+			<div class="full-box nav-lateral-content">
+				<figure class="full-box nav-lateral-avatar">
+					<i class="far fa-times-circle show-nav-lateral"></i>
+					<img src="./assets/avatar/Avatar.png" class="img-fluid" alt="Avatar">
+					<figcaption class="roboto-medium text-center">
+						Carlos Alfaro <br><small class="roboto-condensed-light">Web Developer</small>
+					</figcaption>
+				</figure>
+				<div class="full-box nav-lateral-bar"></div>
+				<nav class="full-box nav-lateral-menu">
+					<ul>
+						<li>
+							<a href="home.html"><i class="fab fa-dashcube fa-fw"></i> &nbsp; Dashboard</a>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-users fa-fw"></i> &nbsp; Deudores <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="deudores-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de deudores</a>
+								</li>
+								<li>
+									<a href=""><i class="fas fa-search fa-fw"></i> &nbsp; Buscar deudor</a>
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-pallet fa-fw"></i> &nbsp; Compromiso de Pagos <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="item-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Compromiso de Pago</a>
+								</li>
+								<li>
+									<a href="item-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Compormisos de Pagos</a>
+								</li>
+								<li>
+									<a href="item-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Compromiso de Pago</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</section>
+
+		<!-- Page content -->
+		<section class="full-box page-content">
+			<nav class="full-box navbar-info">
+				<a href="#" class="float-left show-nav-lateral">
+					<i class="fas fa-exchange-alt"></i>
+				</a>
+				<a href="user-update.html">
+					<i class="fas fa-user-cog"></i>
+				</a>
+				<a href="#" class="btn-exit-system">
+					<i class="fas fa-power-off"></i>
+				</a>
+			</nav>
+
+			<!-- Page header -->
+			<div class="full-box page-header">
+				<h3 class="text-left">
+					<i class="fas fa-sync-alt fa-fw"></i> &nbsp; Operaciones
+				</h3>
+				<p class="text-justify">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem odit amet asperiores quis minus, dolorem repellendus optio doloremque error a omnis soluta quae magnam dignissimos, ipsam, temporibus sequi, commodi accusantium!
+				</p>
+			</div>
+
+			<div class="container-fluid">
+				<ul class="full-box list-unstyled page-nav-tabs">
+					<li>
+						<a href="#form-nueva-operacion"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR OPERACION</a>
+					</li>
+					<li>
+						<a href="item-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR COMPROMISO DE PAGO</a>
+					</li>
+					<li>
+						<a href="client-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE DEUDORES</a>
+					</li>
+				</ul>	
+			</div>
+
+			<div class="container-fluid">
+				<div class="table-responsive">
+					<table class="table table-dark table-sm">
+						<thead>
+							<tr class="text-center roboto-medium">
+								<th>ID</th>
+								<th>DESCRIPCION</th>
+								<th>RESULTADO</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+				<nav aria-label="Page navigation example">
+					<ul class="pagination justify-content-center">
+						<li class="page-item disabled">
+							<a class="page-link" href="#" tabindex="-1">Previous</a>
+						</li>
+						<li class="page-item"><a class="page-link" href="#">1</a></li>
+						<li class="page-item"><a class="page-link" href="#">2</a></li>
+						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item">
+							<a class="page-link" href="#">Next</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+
+			
+
+
+
+			
+			<!-- Content here-->
+			<div class="container-fluid">
+				<form id="form-nueva-operacion" class="form-neon" autocomplete="off">
+					<fieldset>
+						<legend><i class="fas fa-user"></i> &nbsp; Nueva Operación</legend>
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="descripcion" class="bmd-label-floating">Descripción</label>
+										<input type="text" class="form-control" id="descripcion" maxlength="100" required>
+									</div>
+								</div>
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="resultado" class="bmd-label-floating">Resultado</label>
+										<input type="text" class="form-control" id="resultado" maxlength="100" required>
+									</div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<p class="text-center" style="margin-top: 40px;">
+						<button type="submit" class="btn btn-raised btn-success btn-sm"><i class="fas fa-sync-alt"></i> &nbsp; Registrar</button>
+					</p>
+				</form>				
+			</div>	
+
+		</section>
+	</main>
+	
+	
+	<!--=============================================
+	=            Include JavaScript files           =
+	==============================================-->
+	<!-- jQuery V3.4.1 -->
+	<script src="./js/jquery-3.4.1.min.js" ></script>
+
+	<!-- popper -->
+	<script src="./js/popper.min.js" ></script>
+
+	<!-- Bootstrap V4.3 -->
+	<script src="./js/bootstrap.min.js" ></script>
+
+	<!-- jQuery Custom Content Scroller V3.1.5 -->
+	<script src="./js/jquery.mCustomScrollbar.concat.min.js" ></script>
+
+	<!-- Bootstrap Material Design V4.0 -->
+	<script src="./js/bootstrap-material-design.min.js" ></script>
+	<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+
+	<script src="./js/main.js" ></script>
+
+	<script>// Función para obtener los datos y renderizarlos en el tbody
+	document.addEventListener('DOMContentLoaded', () => {
+    // Función para obtener el parámetro de la URL
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    // Obtener el deudorId de la URL
+    const deudorId = getQueryParam('deudorId');
+
+    // Verificar si el deudorId existe
+    if (!deudorId) {
+        console.error('El deudorId no está especificado en la URL.');
+        return;
+    }
+
+    // Función para renderizar las operaciones del deudor
+    function renderOperaciones() {
+        fetch(`http://localhost:8080/gestion/deudas/operaciones/${deudorId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al obtener las operaciones');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const tbody = document.querySelector('tbody');
+                tbody.innerHTML = '';
+
+                data.forEach(operacion => {
+                    const row = `
+                        <tr class="text-center">
+                            <td>${operacion.id}</td>
+                            <td>${operacion.descripcion}</td>
+                            <td>${operacion.resultado}</td>
+                        </tr>
+                    `;
+                    tbody.innerHTML += row;
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    // Llamar a la función para renderizar las operaciones
+    renderOperaciones();
+	});
+	</script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			// Obtener el deudorId de la URL
+			const urlParams = new URLSearchParams(window.location.search);
+			const deudorId = urlParams.get('deudorId');
+
+			if (!deudorId) {
+				console.error('El deudorId no está especificado en la URL.');
+				return;
+			}
+
+			// Seleccionar el formulario
+			const form = document.getElementById('form-nueva-operacion');
+
+			// Manejar el evento submit del formulario
+			form.addEventListener('submit', (event) => {
+				event.preventDefault(); // Evita el comportamiento por defecto del formulario
+
+				// Recopilar los datos del formulario
+				const descripcion = document.getElementById('descripcion').value;
+				const resultado = document.getElementById('resultado').value;
+
+				// Crear el objeto para el cuerpo del POST
+				const operacion = {
+					descripcion: descripcion,
+					resultado: resultado,
+				};
+
+				// Realizar la solicitud POST
+				fetch(`http://localhost:8080/gestion/deudas/operaciones/${deudorId}`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(operacion),
+				})
+					.then((response) => {
+						if (!response.ok) {
+							throw new Error('Error al registrar la operación');
+						}
+						return response.json();
+					})
+					.then((data) => {
+						console.log('Operación registrada:', data);
+						alert('Operación registrada correctamente');
+						form.reset(); // Limpia el formulario
+					})
+					.catch((error) => {
+						console.error('Error:', error);
+						alert('Hubo un error al registrar la operación');
+					});
+			});
+		});
+	</script>
+</body>
+</html>
