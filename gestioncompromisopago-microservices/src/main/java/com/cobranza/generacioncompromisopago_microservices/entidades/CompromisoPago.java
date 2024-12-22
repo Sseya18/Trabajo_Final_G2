@@ -25,7 +25,7 @@ public class CompromisoPago {
     private String fechaAcordada;
 
     @Column(name = "telefono", nullable = false)
-    private String telefono;
+    private Integer telefono;
 
     @Column(name = "correo_electronico", unique = true)
     private String correoElectronico;

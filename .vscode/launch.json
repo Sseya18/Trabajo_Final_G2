@@ -81,6 +81,16 @@
             "projectName": "com.cobranza-generacioncompromisopafo_microservices",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-GeneracionCompromisoPagoApplication<gestioncompromisopago-microservices>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.cobranza.generacioncompromisopago_microservices.GeneracionCompromisoPagoApplication",
+            "projectName": "gestioncompromisopago-microservices",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

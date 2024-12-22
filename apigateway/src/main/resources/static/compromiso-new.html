@@ -57,67 +57,31 @@
 							<a href="#" class="nav-btn-submenu"><i class="fas fa-users fa-fw"></i> &nbsp; Clientes <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
-									<a href="client-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Cliente</a>
+									<a href="deudor-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Deudor</a>
 								</li>
 								<li>
-									<a href="client-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de clientes</a>
+									<a href="deudor-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Deudor</a>
 								</li>
 								<li>
-									<a href="client-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar cliente</a>
+									<a href="deudor-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Deudor</a>
 								</li>
 							</ul>
 						</li>
 
+						
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-pallet fa-fw"></i> &nbsp; Items <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Compromiso de Pago <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
-									<a href="item-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar item</a>
+									<a href="compromiso-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Generar Compromiso de Pago</a>
 								</li>
 								<li>
-									<a href="item-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de items</a>
+									<a href="compromiso-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Compromisos de Pago</a>
 								</li>
 								<li>
-									<a href="item-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar item</a>
+									<a href="compromiso-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Compromiso de Pago</a>
 								</li>
 							</ul>
-						</li>
-
-						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-file-invoice-dollar fa-fw"></i> &nbsp; Préstamos <i class="fas fa-chevron-down"></i></a>
-							<ul>
-								<li>
-									<a href="reservation-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo préstamo</a>
-								</li>
-								<li>
-									<a href="reservation-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de préstamos</a>
-								</li>
-								<li>
-									<a href="reservation-search.html"><i class="fas fa-search-dollar fa-fw"></i> &nbsp; Buscar préstamos</a>
-								</li>
-								<li>
-									<a href="reservation-pending.html"><i class="fas fa-hand-holding-usd fa-fw"></i> &nbsp; Préstamos pendientes</a>
-								</li>
-							</ul>
-						</li>
-
-						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Usuarios <i class="fas fa-chevron-down"></i></a>
-							<ul>
-								<li>
-									<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo usuario</a>
-								</li>
-								<li>
-									<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de usuarios</a>
-								</li>
-								<li>
-									<a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar usuario</a>
-								</li>
-							</ul>
-						</li>
-
-						<li>
-							<a href="company.html"><i class="fas fa-store-alt fa-fw"></i> &nbsp; Empresa</a>
 						</li>
 					</ul>
 				</nav>
@@ -141,7 +105,7 @@
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-left">
-					<i class="fas fa-plus fa-fw"></i> &nbsp; NUEVO USUARIO
+					<i class="fas fa-plus fa-fw"></i> &nbsp; Generar Compromiso de Pago
 				</h3>
 				<p class="text-justify">
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit nostrum rerum animi natus beatae ex. Culpa blanditiis tempore amet alias placeat, obcaecati quaerat ullam, sunt est, odio aut veniam ratione.
@@ -151,111 +115,73 @@
 			<div class="container-fluid">
 				<ul class="full-box list-unstyled page-nav-tabs">
 					<li>
-						<a class="active" href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; NUEVO USUARIO</a>
+						<a class="active" href="compromiso-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; GENERAR COMPROMISO DE PAGO</a>
 					</li>
 					<li>
-						<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE USUARIOS</a>
+						<a href="compromiso-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE COMPROMISO DE PAGO</a>
 					</li>
 					<li>
-						<a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR USUARIO</a>
+						<a href="compromiso-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR COMPROMISO DE PAGO</a>
 					</li>
 				</ul>	
 			</div>
 			
 			<!-- Content -->
 			<div class="container-fluid">
-				<form action="" class="form-neon" autocomplete="off">
+				<form action="" id="compromisoForm" class="form-neon" autocomplete="off">
 					<fieldset>
-						<legend><i class="far fa-address-card"></i> &nbsp; Información personal</legend>
+						<legend><i class="far fa-address-card"></i> &nbsp; Completar Campos</legend>
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="usuario_dni" class="bmd-label-floating">DNI</label>
-										<input type="text" pattern="[0-9-]{1,20}" class="form-control" name="usuario_dni" id="usuario_dni" maxlength="20">
+										<label for="usuario_dni" class="bmd-label-floating">Fecha Acordada</label>
+										<input type="text" pattern="[0-9-]{1,20}" class="form-control" name="usuario_dni" id="fechaAcordada" maxlength="20">
 									</div>
 								</div>
 								
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="usuario_nombre" class="bmd-label-floating">Nombres</label>
-										<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" name="usuario_nombre" id="usuario_nombre" maxlength="35">
+										<label for="usuario_nombre" class="bmd-label-floating">Telefono</label>
+										<input type="number" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" name="usuario_nombre" id="telefono" maxlength="35">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="usuario_apellido" class="bmd-label-floating">Apellidos</label>
-										<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" name="usuario_apellido" id="usuario_apellido" maxlength="35">
+										<label for="usuario_correo" class="bmd-label-floating">Correo Electrónico</label>
+										<input type="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" class="form-control" name="usuario_correo" id="correoElectronico" maxlength="35" required>
+
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="usuario_telefono" class="bmd-label-floating">Teléfono</label>
-										<input type="text" pattern="[0-9()+]{1,20}" class="form-control" name="usuario_telefono" id="usuario_telefono" maxlength="20">
+										<label for="usuario_telefono" class="bmd-label-floating">Monto Acordado</label>
+										<input type="text" pattern="[0-9()+]{1,20}" class="form-control" name="usuario_telefono" id="montoAcordado" maxlength="20">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="usuario_direccion" class="bmd-label-floating">Dirección</label>
-										<input type="text" pattern="[a-zA-Z0-99áéíóúÁÉÍÓÚñÑ()# ]{1,190}" class="form-control" name="usuario_direccion" id="usuario_direccion" maxlength="190">
+										<label for="usuario_direccion" class="bmd-label-floating">Estado</label>
+										<input type="text" pattern="[a-zA-Z0-99áéíóúÁÉÍÓÚñÑ()# ]{1,190}" class="form-control" name="usuario_direccion" id="estado" maxlength="190">
+									</div>
+								</div>
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="usuario_direccion" class="bmd-label-floating">ID Deudor</label>
+										<input type="text" pattern="[a-zA-Z0-99áéíóúÁÉÍÓÚñÑ()# ]{1,190}" class="form-control" name="usuario_direccion" id="idDeudor" maxlength="190">
+									</div>
+								</div>
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="usuario_direccion" class="bmd-label-floating">DNI Deudor</label>
+										<input type="text" pattern="[a-zA-Z0-99áéíóúÁÉÍÓÚñÑ()# ]{1,190}" class="form-control" name="usuario_direccion" id="dniDeudor" maxlength="190">
 									</div>
 								</div>
 							</div>
 						</div>
 					</fieldset>
 					<br><br><br>
-					<fieldset>
-						<legend><i class="fas fa-user-lock"></i> &nbsp; Información de la cuenta</legend>
-						<div class="container-fluid">
-							<div class="row">
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label for="usuario_usuario" class="bmd-label-floating">Nombre de usuario</label>
-										<input type="text" pattern="[a-zA-Z0-9]{1,35}" class="form-control" name="usuario_usuario" id="usuario_usuario" maxlength="35">
-									</div>
-								</div>
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label for="usuario_email" class="bmd-label-floating">Email</label>
-										<input type="email" class="form-control" name="usuario_email" id="usuario_email" maxlength="70">
-									</div>
-								</div>
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label for="usuario_clave_1" class="bmd-label-floating">Contraseña</label>
-										<input type="password" class="form-control" name="usuario_clave_1" id="usuario_clave_1" maxlength="200">
-									</div>
-								</div>
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label for="usuario_clave_2" class="bmd-label-floating">Repetir contraseña</label>
-										<input type="password" class="form-control" name="usuario_clave_2" id="usuario_clave_2" maxlength="200">
-									</div>
-								</div>
-							</div>
-						</div>
-					</fieldset>
-					<br><br><br>
-					<fieldset>
-						<legend><i class="fas fa-medal"></i> &nbsp; Nivel de privilegio</legend>
-						<div class="container-fluid">
-							<div class="row">
-								<div class="col-12">
-									<p><span class="badge badge-info">Control total</span> Permisos para registrar, actualizar y eliminar</p>
-									<p><span class="badge badge-success">Edición</span> Permisos para registrar y actualizar</p>
-									<p><span class="badge badge-dark">Registrar</span> Solo permisos para registrar</p>
-									<div class="form-group">
-										<select class="form-control" name="usuario_privilegio">
-											<option value="" selected="" disabled="">Seleccione una opción</option>
-											<option value="1">Control total</option>
-											<option value="2">Edición</option>
-											<option value="3">Registrar</option>
-										</select>
-									</div>
-								</div>
-							</div>
-						</div>
-					</fieldset>
+				
 					<p class="text-center" style="margin-top: 40px;">
 						<button type="reset" class="btn btn-raised btn-secondary btn-sm"><i class="fas fa-paint-roller"></i> &nbsp; LIMPIAR</button>
 						&nbsp; &nbsp;
@@ -289,5 +215,41 @@
 	<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
 
 	<script src="./js/main.js" ></script>
+
+	<script>
+        document.getElementById('compromisoForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const data = {
+                fechaAcordada: document.getElementById('fechaAcordada').value,
+                telefono: document.getElementById('telefono').value,
+                correoElectronico: document.getElementById('correoElectronico').value,
+                montoAcordado: document.getElementById('montoAcordado').value,
+                estado: document.getElementById('estado').value,
+                idDeudor: document.getElementById('idDeudor').value,
+                dniDeudor: document.getElementById('dniDeudor').value,
+            };
+
+            try {
+                const response = await fetch('/api/v1/compromisopago', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    alert('Compromiso de pago registrado exitosamente');
+                    document.getElementById('compromisoForm').reset();
+                } else {
+                    alert('Error al registrar el compromiso de pago');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Error al conectar con el servidor');
+            }
+        });
+    </script>
 </body>
 </html>
