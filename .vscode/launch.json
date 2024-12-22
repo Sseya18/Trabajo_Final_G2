@@ -41,6 +41,59 @@
             "projectName": "gestionclientesmicroservicios",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+<<<<<<< HEAD
+=======
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ApigatewayApplication<com.cobranza-apigateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.cobranza.apigateway.ApigatewayApplication",
+            "projectName": "com.cobranza-apigateway",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-GeneracionCompromisoPagoApplication<com.cobranza-gestiondeudores-microservices>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.cobranza.generacioncompromisopago_microservices.GeneracionCompromisoPagoApplication",
+            "projectName": "com.cobranza-gestiondeudores-microservices",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-GestionclientesmicroserviciosApplication<com.cobranza-gestionclientesmicroservicios>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.cobranza.gestionclientesmicroservicios.GestionclientesmicroserviciosApplication",
+            "projectName": "com.cobranza-gestionclientesmicroservicios",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-GeneracioncompromisopafoMicroservicesApplication<com.cobranza-generacioncompromisopafo_microservices>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.cobranza.generacioncompromisopafo_microservices.GeneracioncompromisopafoMicroservicesApplication",
+            "projectName": "com.cobranza-generacioncompromisopafo_microservices",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-GeneracionCompromisoPagoApplication<gestioncompromisopago-microservices>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.cobranza.generacioncompromisopago_microservices.GeneracionCompromisoPagoApplication",
+            "projectName": "gestioncompromisopago-microservices",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+>>>>>>> brayan
         }
     ]
 }

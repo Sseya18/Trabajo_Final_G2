@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.cobranza.gestiondeudores_microservices.entidades.Deudor;
+
 import com.cobranza.gestiondeudores_microservices.entidades.DeudorRequest;
 import com.cobranza.gestiondeudores_microservices.entidades.Operador;
 import com.cobranza.gestiondeudores_microservices.servicios.DeudorService;
@@ -13,6 +14,7 @@ import com.cobranza.gestiondeudores_microservices.servicios.OperadorService;
 import java.util.List;
 
 @RestController
+
 @RequestMapping("/gestion/deudas/deudores")
 public class DeudorController {
 
@@ -46,7 +48,6 @@ public class DeudorController {
         if (operador == null) {
             return ResponseEntity.badRequest().body(null);
         }
-
         Deudor nuevoDeudor = new Deudor();
         nuevoDeudor.setNombre(deudorRequest.getNombre());
         nuevoDeudor.setApellido(deudorRequest.getApellido());
@@ -57,26 +58,6 @@ public class DeudorController {
 
         Deudor deudorGuardado = deudorService.saveDeudor(nuevoDeudor);
         return ResponseEntity.ok(deudorGuardado);
-    }
-
-    // Actualizar un deudor
-    @PutMapping("/{id}")
-    public ResponseEntity<Deudor> actualizar(@PathVariable Long id, @RequestBody Deudor detallesDeudor) {
-        Deudor deudor = deudorService.getDeudorById(id);
-        if (deudor == null) {
-            return ResponseEntity.notFound().build();
-        }
-
-        deudor.setNombre(detallesDeudor.getNombre());
-        deudor.setApellido(detallesDeudor.getApellido());
-        deudor.setTelefono(detallesDeudor.getTelefono());
-        deudor.setCorreoElectronico(detallesDeudor.getCorreoElectronico());
-        deudor.setMontoDeuda(detallesDeudor.getMontoDeuda());
-        deudor.setOperador(detallesDeudor.getOperador());
-
-        Deudor deudorActualizado = deudorService.saveDeudor(deudor);
-        return ResponseEntity.ok(deudorActualizado);
-        
     }
 
 }

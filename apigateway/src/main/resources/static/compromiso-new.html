@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Nuevo usuario</title>
+
+	<!-- Normalize V8.0.1 -->
+	<link rel="stylesheet" href="./css/normalize.css">
+
+	<!-- Bootstrap V4.3 -->
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+
+	<!-- Bootstrap Material Design V4.0 -->
+	<link rel="stylesheet" href="./css/bootstrap-material-design.min.css">
+
+	<!-- Font Awesome V5.9.0 -->
+	<link rel="stylesheet" href="./css/all.css">
+
+	<!-- Sweet Alerts V8.13.0 CSS file -->
+	<link rel="stylesheet" href="./css/sweetalert2.min.css">
+
+	<!-- Sweet Alert V8.13.0 JS file-->
+	<script src="./js/sweetalert2.min.js" ></script>
+
+	<!-- jQuery Custom Content Scroller V3.1.5 -->
+	<link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css">
+	
+	<!-- General Styles -->
+	<link rel="stylesheet" href="./css/style.css">
+
+
+</head>
+<body>
+	
+	<!-- Main container -->
+	<main class="full-box main-container">
+		<!-- Nav lateral -->
+		<section class="full-box nav-lateral">
+			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
+			<div class="full-box nav-lateral-content">
+				<figure class="full-box nav-lateral-avatar">
+					<i class="far fa-times-circle show-nav-lateral"></i>
+					<img src="./assets/avatar/Avatar.png" class="img-fluid" alt="Avatar">
+					<figcaption class="roboto-medium text-center">
+						Carlos Alfaro <br><small class="roboto-condensed-light">Web Developer</small>
+					</figcaption>
+				</figure>
+				<div class="full-box nav-lateral-bar"></div>
+				<nav class="full-box nav-lateral-menu">
+					<ul>
+						<li>
+							<a href="home.html"><i class="fab fa-dashcube fa-fw"></i> &nbsp; Dashboard</a>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-users fa-fw"></i> &nbsp; Deudores <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+
+									<a href="deudores-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de deudores</a>
+								</li>
+								<li>
+									<a href="deudor-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar deudor</a>
+
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Compromiso de Pago <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="compromiso-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Generar Compromiso de Pago</a>
+								</li>
+								<li>
+									<a href="compromiso-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Compromisos de Pago</a>
+								</li>
+								<li>
+									<a href="compromiso-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Compromiso de Pago</a>
+								</li>
+							</ul>
+						</li>
+
+					</ul>
+				</nav>
+			</div>
+		</section>
+
+		<!-- Page content -->
+		<section class="full-box page-content">
+			<nav class="full-box navbar-info">
+				<a href="#" class="float-left show-nav-lateral">
+					<i class="fas fa-exchange-alt"></i>
+				</a>
+				<a href="user-update.html">
+					<i class="fas fa-user-cog"></i>
+				</a>
+				<a href="#" class="btn-exit-system">
+					<i class="fas fa-power-off"></i>
+				</a>
+			</nav>
+
+			<!-- Page header -->
+			<div class="full-box page-header">
+				<h3 class="text-left">
+					<i class="fas fa-plus fa-fw"></i> &nbsp; Generar Compromiso de Pago
+				</h3>
+				<p class="text-justify">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit nostrum rerum animi natus beatae ex. Culpa blanditiis tempore amet alias placeat, obcaecati quaerat ullam, sunt est, odio aut veniam ratione.
+				</p>
+			</div>
+			
+			<div class="container-fluid">
+				<ul class="full-box list-unstyled page-nav-tabs">
+					<li>
+						<a class="active" href="compromiso-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; GENERAR COMPROMISO DE PAGO</a>
+					</li>
+					<li>
+						<a href="compromiso-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE COMPROMISO DE PAGO</a>
+					</li>
+					<li>
+						<a href="compromiso-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR COMPROMISO DE PAGO</a>
+					</li>
+				</ul>	
+			</div>
+			
+			<!-- Content -->
+			<div class="container-fluid">
+				<form action="" id="compromisoForm" class="form-neon" autocomplete="off">
+					<fieldset>
+						<legend><i class="far fa-address-card"></i> &nbsp; Completar Campos</legend>
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="usuario_dni" class="bmd-label-floating">Fecha Acordada</label>
+										<input type="date" pattern="[0-9-]{1,20}" class="form-control" name="usuario_dni" id="fechaAcordada" maxlength="20">
+									</div>
+								</div>
+								
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="usuario_nombre" class="bmd-label-floating">Telefono</label>
+										<input type="number" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" name="usuario_nombre" id="telefono" maxlength="35">
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="usuario_correo" class="bmd-label-floating">Correo Electrónico</label>
+										<input type="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" class="form-control" name="usuario_correo" id="correoElectronico" maxlength="35" required>
+
+									</div>
+								</div>
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="usuario_telefono" class="bmd-label-floating">Monto Acordado</label>
+										<input type="text" pattern="[0-9()+]{1,20}" class="form-control" name="usuario_telefono" id="montoAcordado" maxlength="20">
+									</div>
+								</div>
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="usuario_direccion" class="bmd-label-floating">Estado</label>
+										<input type="text" pattern="[a-zA-Z0-99áéíóúÁÉÍÓÚñÑ()# ]{1,190}" class="form-control" name="usuario_direccion" id="estado" maxlength="190">
+									</div>
+								</div>
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="usuario_direccion" class="bmd-label-floating">ID Deudor</label>
+										<input type="text" pattern="[a-zA-Z0-99áéíóúÁÉÍÓÚñÑ()# ]{1,190}" class="form-control" name="usuario_direccion" id="idDeudor" maxlength="190">
+									</div>
+								</div>
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="usuario_direccion" class="bmd-label-floating">DNI Deudor</label>
+										<input type="text" pattern="[a-zA-Z0-99áéíóúÁÉÍÓÚñÑ()# ]{1,190}" class="form-control" name="usuario_direccion" id="dniDeudor" maxlength="190">
+									</div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<br><br><br>
+				
+					<p class="text-center" style="margin-top: 40px;">
+						<button type="reset" class="btn btn-raised btn-secondary btn-sm"><i class="fas fa-paint-roller"></i> &nbsp; LIMPIAR</button>
+						&nbsp; &nbsp;
+						<button type="submit" class="btn btn-raised btn-info btn-sm"><i class="far fa-save"></i> &nbsp; GUARDAR</button>
+					</p>
+				</form>
+			</div>
+			
+
+		</section>
+	</main>
+	
+	
+	<!--=============================================
+	=            Include JavaScript files           =
+	==============================================-->
+	<!-- jQuery V3.4.1 -->
+	<script src="./js/jquery-3.4.1.min.js" ></script>
+
+	<!-- popper -->
+	<script src="./js/popper.min.js" ></script>
+
+	<!-- Bootstrap V4.3 -->
+	<script src="./js/bootstrap.min.js" ></script>
+
+	<!-- jQuery Custom Content Scroller V3.1.5 -->
+	<script src="./js/jquery.mCustomScrollbar.concat.min.js" ></script>
+
+	<!-- Bootstrap Material Design V4.0 -->
+	<script src="./js/bootstrap-material-design.min.js" ></script>
+	<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+
+	<script src="./js/main.js" ></script>
+
+	<script>
+        document.getElementById('compromisoForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const data = {
+                fechaAcordada: document.getElementById('fechaAcordada').value,
+                telefono: document.getElementById('telefono').value,
+                correoElectronico: document.getElementById('correoElectronico').value,
+                montoAcordado: document.getElementById('montoAcordado').value,
+                estado: document.getElementById('estado').value,
+                idDeudor: document.getElementById('idDeudor').value,
+                dniDeudor: document.getElementById('dniDeudor').value,
+            };
+
+            try {
+                const response = await fetch('/api/v1/compromisopago', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    alert('Compromiso de pago registrado exitosamente');
+                    document.getElementById('compromisoForm').reset();
+                } else {
+                    alert('Error al registrar el compromiso de pago');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Error al conectar con el servidor');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -15,6 +15,8 @@ public class GatewayConfig {
                         .uri("lb://gestiondeudores-microservices"))
                 .route("gestion-clientes-route", r -> r.path("/clientes/**")
                         .uri("lb://gestionclientesmicroservicios"))
+                .route("generacion-compromisopago-route", r -> r.path("/compromisopago/**")
+                        .uri("lb://generacioncompromisopago-microservices"))
                 .build();
     }
 }
