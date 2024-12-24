@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class GatewayConfig {
 
     @Bean
-    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
+    RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route("gestion-deudores-route", r -> r.path("/deudores/**")
                         .uri("lb://gestiondeudores-microservices"))
@@ -17,6 +17,8 @@ public class GatewayConfig {
                         .uri("lb://gestionclientesmicroservicios"))
                 .route("generacion-compromisopago-route", r -> r.path("/compromisopago/**")
                         .uri("lb://generacioncompromisopago-microservices"))
+                .route("autenticacion-microservices-route", r -> r.path("/auth/**")
+                        .uri("lb://autenticacion-microservices"))
                 .build();
     }
 }

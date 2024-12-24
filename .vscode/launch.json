@@ -91,6 +91,16 @@
             "projectName": "gestioncompromisopago-microservices",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-AutenticacionApplication<autenticacion-microservices>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.cobranza.autenticacion_microservices.AutenticacionApplication",
+            "projectName": "autenticacion-microservices",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
