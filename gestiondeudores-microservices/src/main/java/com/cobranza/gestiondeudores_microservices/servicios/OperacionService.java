@@ -1,5 +1,6 @@
 package com.cobranza.gestiondeudores_microservices.servicios;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,13 @@ public class OperacionService {
     public Operacion saveOperacion(Long deudorId, Operacion operacion) {
         // Asignar deudor a la operación
         Deudor deudor = deudorService.getDeudorById(deudorId);
+        LocalDate fechaContacto = LocalDate.now();
         if (deudor == null) {
             throw new IllegalArgumentException("Deudor no encontrado");
         }
-        operacion.setDeudor(deudor);
+        deudor.setFechaContacto(fechaContacto);
+        deudor.setDetalle(operacion.getResultado());
+        operacion.setDeudorId(deudorId);
         return operacionRepository.save(operacion);
     }
 

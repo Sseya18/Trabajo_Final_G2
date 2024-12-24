@@ -16,7 +16,7 @@ public class Operacion {
     private String descripcion;
     private String resultado;
 
-    @ManyToOne
-    @JoinColumn(name = "deudor_id")
-    private Deudor deudor;
+    @Column(name = "deudor_id", nullable = false)
+    private Long deudorId; // Campo que almacena el ID del operador
+
 }

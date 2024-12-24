@@ -128,12 +128,16 @@
 						<thead>
 							<tr class="text-center roboto-medium">
 								<th>ID</th>
+								<th>PRIORIDAD</th>
+								<th>TIPO</th>
 								<th>NOMBRE</th>
-								<th>APELLIDO</th>
 								<th>TELEFONO</th>
-								<th>CORREO ELECTRONICO</th>
+								<th>ORIGEN</th>
+								<th>PRODUCTO</th>
 								<th>MONTO DEUDA</th>
-								<th>FECHA REGISTRO</th>
+								<Th>ULTIMO CONTACO</Th>
+								<th>DETALLE</th>
+								<th>OPERACIONES</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -200,23 +204,19 @@
 					const row = `
 						<tr class="text-center">
 							<td>${deudor.id}</td>
-							<td>${deudor.nombre}</td>
-							<td>${deudor.apellido}</td>
+							<td>${deudor.prioridad}</td>
+							<td>${deudor.tipo}</td>
+							<td>${deudor.nombres}</td>
 							<td>${deudor.telefono}</td>
-							<td>${deudor.correoElectronico}</td>
+							<td>${deudor.origen}</td>
+							<td>${deudor.producto}</td>
 							<td>${deudor.montoDeuda}</td>
-							<td>${deudor.fechaRegistro}</td>
+							<td>${deudor.fechaContacto}</td>
+							<td>${deudor.detalle}</td>
 							<td>
 							<a href="operaciones-update.html?deudorId=${deudor.id}" class="btn btn-success">
 								Ver Operaciones
 							</a>
-							</td>
-							<td>
-								<form action="">
-									<button type="button" class="btn btn-warning">
-										<i class="far fa-trash-alt"></i>
-									</button>
-								</form>
 							</td>
 						</tr>
 					`;
