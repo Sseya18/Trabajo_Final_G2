@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Actualizar cliente</title>
+	<title>Lista de Clientes</title>
 
 	<!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href="./css/normalize.css">
@@ -43,7 +43,7 @@
 					<i class="far fa-times-circle show-nav-lateral"></i>
 					<img src="./assets/avatar/Avatar.png" class="img-fluid" alt="Avatar">
 					<figcaption class="roboto-medium text-center">
-						Carlos Alfaro <br><small class="roboto-condensed-light">Web Developer</small>
+						Josemi Vasquez <br><small class="roboto-condensed-light">Web Developer</small>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -81,6 +81,7 @@
 								</li>
 							</ul>
 						</li>
+
 						<li>
 							<a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Clientes <i class="fas fa-chevron-down"></i></a>
 							<ul>
@@ -95,11 +96,11 @@
 								</li>
 							</ul>
 						</li>
+
 					</ul>
 				</nav>
 			</div>
 		</section>
-
 		<!-- Page content -->
 		<section class="full-box page-content">
 			<nav class="full-box navbar-info">
@@ -117,38 +118,42 @@
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-left">
-					<i class="fas fa-sync-alt fa-fw"></i> &nbsp; Operaciones
+					<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE CLIENTES 
 				</h3>
 				<p class="text-justify">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem odit amet asperiores quis minus, dolorem repellendus optio doloremque error a omnis soluta quae magnam dignissimos, ipsam, temporibus sequi, commodi accusantium!
+					Esta vista sirve para la gestión de los clientes
 				</p>
 			</div>
 
 			<div class="container-fluid">
 				<ul class="full-box list-unstyled page-nav-tabs">
 					<li>
-						<a href="#form-nueva-operacion"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR OPERACION</a>
+						<a class="active" href="client-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE CLIENTES</a>
 					</li>
 					<li>
-						<a href="compromiso-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR COMPROMISO DE PAGO</a>
-					</li>
-					<li>
-						<a href="client-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE DEUDORES</a>
+						<a href="client-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR CLIENTE</a>
 					</li>
 				</ul>	
 			</div>
-
+			
+			<!-- Content here-->
 			<div class="container-fluid">
 				<div class="table-responsive">
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-								<th>ID</th>
-								<th>DESCRIPCION</th>
-								<th>RESULTADO</th>
+								<th>RUC</th>
+								<th>NOMBRE</th>
+								<th>TELEFONO</th>
+								<th>DIRECCION</th>
+								<th>FECHA DE REGISTRO</th>
+								<th>NUMERO DE DEUDORES ASIGNADOS</th>
+								<th>MONTO TOTAL DE DEUDA</th>
+								<th>MONTO SALDADO</th>
 							</tr>
 						</thead>
 						<tbody>
+
 						</tbody>
 					</table>
 				</div>
@@ -167,44 +172,10 @@
 				</nav>
 			</div>
 
-			
-
-
-
-			
-			<!-- Content here-->
-			<div class="container-fluid">
-				<form id="form-nueva-operacion" class="form-neon" autocomplete="off">
-					<fieldset>
-						<legend><i class="far fa-address-card"></i> &nbsp; Nueva Operacion</legend>
-						<div class="container-fluid">
-							<div class="row">
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label for="descripcion" class="bmd-label-floating">Descripción</label>
-										<input type="text" class="form-control" id="descripcion" maxlength="100" required>
-									</div>
-								</div>
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label for="resultado" class="bmd-label-floating">Resultado</label>
-										<input type="text" class="form-control" id="resultado" maxlength="100" required>
-									</div>
-								</div>
-							</div>
-						</div>
-					</fieldset>
-					<p class="text-center" style="margin-top: 40px;">
-						<button type="reset" class="btn btn-raised btn-secondary btn-sm"><i class="fas fa-paint-roller"></i> &nbsp; LIMPIAR</button>
-						&nbsp; &nbsp;
-						<button type="submit" class="btn btn-raised btn-info btn-sm"><i class="far fa-save"></i> &nbsp; GUARDAR</button>
-					</p>
-				</form>				
-			</div>	
-
 		</section>
 	</main>
 	
+
 	
 	<!--=============================================
 	=            Include JavaScript files           =
@@ -226,111 +197,49 @@
 	<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
 
 	<script src="./js/main.js" ></script>
-
 	<script>// Función para obtener los datos y renderizarlos en el tbody
-	document.addEventListener('DOMContentLoaded', () => {
-    // Función para obtener el parámetro de la URL
-    function getQueryParam(param) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(param);
-    }
-
-    // Obtener el deudorId de la URL
-    const deudorId = getQueryParam('deudorId');
-
-    // Verificar si el deudorId existe
-    if (!deudorId) {
-        console.error('El deudorId no está especificado en la URL.');
-        return;
-    }
-
-    // Función para renderizar las operaciones del deudor
-    function renderOperaciones() {
-        fetch(`http://localhost:8080/gestion/deudas/operaciones/${deudorId}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error al obtener las operaciones');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const tbody = document.querySelector('tbody');
-                tbody.innerHTML = '';
-
-                data.forEach(operacion => {
-                    const row = `
-                        <tr class="text-center">
-                            <td>${operacion.id}</td>
-                            <td>${operacion.descripcion}</td>
-                            <td>${operacion.resultado}</td>
-                        </tr>
-                    `;
-                    tbody.innerHTML += row;
-                });
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    }
-
-    // Llamar a la función para renderizar las operaciones
-    renderOperaciones();
-	});
-	</script>
-
-	<script>
-		document.addEventListener('DOMContentLoaded', () => {
-			// Obtener el deudorId de la URL
-			const urlParams = new URLSearchParams(window.location.search);
-			const deudorId = urlParams.get('deudorId');
-
-			if (!deudorId) {
-				console.error('El deudorId no está especificado en la URL.');
-				return;
-			}
-
-			// Seleccionar el formulario
-			const form = document.getElementById('form-nueva-operacion');
-
-			// Manejar el evento submit del formulario
-			form.addEventListener('submit', (event) => {
-				event.preventDefault(); // Evita el comportamiento por defecto del formulario
-
-				// Recopilar los datos del formulario
-				const descripcion = document.getElementById('descripcion').value;
-				const resultado = document.getElementById('resultado').value;
-
-				// Crear el objeto para el cuerpo del POST
-				const operacion = {
-					descripcion: descripcion,
-					resultado: resultado,
-				};
-
-				// Realizar la solicitud POST
-				fetch(`http://localhost:8080/gestion/deudas/operaciones/${deudorId}`, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify(operacion),
-				})
-					.then((response) => {
-						if (!response.ok) {
-							throw new Error('Error al registrar la operación');
-						}
-						return response.json();
-					})
-					.then((data) => {
-						console.log('Operación registrada:', data);
-						alert('Operación registrada correctamente');
-						form.reset(); // Limpia el formulario
-					})
-					.catch((error) => {
-						console.error('Error:', error);
-						alert('Hubo un error al registrar la operación');
-					});
+		function renderClientes() {
+		// Realiza una solicitud GET al endpoint
+		fetch('http://localhost:8080/api/v1/clientes')
+			.then(response => {
+				if (!response.ok) {
+					throw new Error('Error al obtener los datos');
+				}
+				return response.json(); // Convierte la respuesta a JSON
+			})
+			.then(data => {
+				const tbody = document.querySelector('tbody'); // Selecciona el tbody donde se van a insertar las filas
+				tbody.innerHTML = ''; // Limpia el contenido existente del tbody
+	
+				// Itera sobre el objeto JSON para construir las filas
+				data.forEach(cliente => {
+					const row = `
+						<tr class="text-center">
+							<td>${cliente.ruc}</td>
+							<td>${cliente.nombre}</td>
+							<td>${cliente.telefono}</td>
+							<td>${cliente.direccion}</td>
+							<td>${cliente.fechaRegistro}</td>
+							<td>${cliente.nroDeudoresAsignados}</td>
+							<td>${cliente.montoTotalDeuda}</td>
+							<td>${cliente.montoSaldado}</td>
+							<td>
+							<a href="operaciones-update.html?deudorId=${cliente.ruc}" class="btn btn-success">
+								Ver Operaciones
+							</a>
+							</td>
+						</tr>
+					`;
+					tbody.innerHTML += row; // Agrega la fila al tbody
+				});
+			})
+			.catch(error => {
+				console.error('Error:', error);
 			});
-		});
-	</script>
+	}
+	
+	// Llama a la función para renderizar los datos al cargar la página
+	document.addEventListener('DOMContentLoaded', renderClientes);</script>
 </body>
+<script src="./js/seguridad.js" ></script>
 </html>
