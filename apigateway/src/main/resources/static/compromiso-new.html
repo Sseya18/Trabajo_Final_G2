@@ -132,6 +132,12 @@
 						<legend><i class="far fa-address-card"></i> &nbsp; Completar Campos</legend>
 						<div class="container-fluid">
 							<div class="row">
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="usuario_direccion" class="bmd-label-floating">ID Deudor</label>
+										<input type="text" pattern="[a-zA-Z0-99áéíóúÁÉÍÓÚñÑ()# ]{1,190}" class="form-control" name="usuario_direccion" id="idDeudor" maxlength="190">
+									</div>
+								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
 										<label for="usuario_dni" class="bmd-label-floating">Fecha Acordada</label>
@@ -141,39 +147,27 @@
 								
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="usuario_nombre" class="bmd-label-floating">Telefono</label>
-										<input type="number" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" name="usuario_nombre" id="telefono" maxlength="35">
+										<label for="usuario_nombre" class="bmd-label-floating">Monto Acordado</label>
+										<input type="number" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" name="usuario_nombre" id="montoAcordado" maxlength="35">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="usuario_correo" class="bmd-label-floating">Correo Electrónico</label>
-										<input type="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" class="form-control" name="usuario_correo" id="correoElectronico" maxlength="35" required>
+										<label for="usuario_correo" class="bmd-label-floating">Cantidad de Cuotas</label>
+										<input type="number" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" class="form-control" name="usuario_correo" id="cantidadCuotas" maxlength="35" required>
 
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="usuario_telefono" class="bmd-label-floating">Monto Acordado</label>
-										<input type="text" pattern="[0-9()+]{1,20}" class="form-control" name="usuario_telefono" id="montoAcordado" maxlength="20">
+										<label for="usuario_telefono" class="bmd-label-floating">Número de Cuota</label>
+										<input type="number" pattern="[0-9()+]{1,20}" class="form-control" name="usuario_telefono" id="numeroCuota" maxlength="20">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="usuario_direccion" class="bmd-label-floating">Estado</label>
 										<input type="text" pattern="[a-zA-Z0-99áéíóúÁÉÍÓÚñÑ()# ]{1,190}" class="form-control" name="usuario_direccion" id="estado" maxlength="190">
-									</div>
-								</div>
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label for="usuario_direccion" class="bmd-label-floating">ID Deudor</label>
-										<input type="text" pattern="[a-zA-Z0-99áéíóúÁÉÍÓÚñÑ()# ]{1,190}" class="form-control" name="usuario_direccion" id="idDeudor" maxlength="190">
-									</div>
-								</div>
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label for="usuario_direccion" class="bmd-label-floating">DNI Deudor</label>
-										<input type="text" pattern="[a-zA-Z0-99áéíóúÁÉÍÓÚñÑ()# ]{1,190}" class="form-control" name="usuario_direccion" id="dniDeudor" maxlength="190">
 									</div>
 								</div>
 							</div>
@@ -221,12 +215,11 @@
             
             const data = {
                 fechaAcordada: document.getElementById('fechaAcordada').value,
-                telefono: document.getElementById('telefono').value,
-                correoElectronico: document.getElementById('correoElectronico').value,
                 montoAcordado: document.getElementById('montoAcordado').value,
-                estado: document.getElementById('estado').value,
-                idDeudor: document.getElementById('idDeudor').value,
-                dniDeudor: document.getElementById('dniDeudor').value,
+				idDeudor: document.getElementById('idDeudor').value,
+				cantidadCuotas: document.getElementById('cantidadCuotas').value,
+				numeroCuota: document.getElementById('numeroCuota').value,
+				estado: document.getElementById('estado').value
             };
 
             try {
