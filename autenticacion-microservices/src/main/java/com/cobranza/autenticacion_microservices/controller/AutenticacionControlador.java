@@ -37,11 +37,9 @@ public class AutenticacionControlador {
         var operador = autenticacionServicio.buscarPorUsuario(autenticacion.getUsuario());
         if (operador.isPresent() && 
             new BCryptPasswordEncoder().matches(autenticacion.getContrasena(), operador.get().getContrasena())) {
-
             // Genera el token JWT
             String token = jwtService.generateToken(autenticacion.getUsuario());
-            
-            return ResponseEntity.ok(Map.of("token", token));
+            return ResponseEntity.ok(Map.of("token", token,"operador",operador.get().getId(),"nombre",operador.get().getNombreOperador(),"apellido",operador.get().getApellidoOperador()));
         }
         return ResponseEntity.status(401).body("Usuario o contraseña incorrectos");
     }

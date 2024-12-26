@@ -95,6 +95,9 @@
 			if (response.ok) {
 				const data = await response.json();
 				localStorage.setItem('token', data.token); // Guardar el token en localStorage
+				localStorage.setItem('nombre', data.nombre); // Guardar el nombre en localStorage
+				localStorage.setItem('apellido', data.apellido); // Guardar el rol en localStorage
+				localStorage.setItem('operador',data.operador)
 				alert('Login exitoso');
 				window.location.href = '/home.html'; // Redirige a la página de deudores
 			} else {

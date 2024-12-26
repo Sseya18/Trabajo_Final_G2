@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         localStorage.removeItem('token');
         window.location.href = '/index.html';
         }
+    
 });
 
 // Cerrar sesión
