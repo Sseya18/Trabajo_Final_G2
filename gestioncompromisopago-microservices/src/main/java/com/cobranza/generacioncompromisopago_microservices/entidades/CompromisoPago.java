@@ -23,22 +23,19 @@ public class CompromisoPago {
 
     @Column(name = "fecha_Acordada", nullable = false)
     private String fechaAcordada;
-
-    @Column(name = "telefono", nullable = false)
-    private Integer telefono;
-
-    @Column(name = "correo_electronico", unique = true)
-    private String correoElectronico;
-
+    
     @Column(name = "monto_acordado", nullable = false)
     private Double montoAcordado;
 
     @Column(name = "estado", nullable = false)
     private String estado;
 
-    @Column(name = "Id_cliente", nullable = false)
+    @Column(name = "Id_deudor", nullable = false)
     private Integer idDeudor;
 
-    @Column(name = "dniDeudor", nullable = false)
-    private Integer dniDeudor;
+    @Column(name = "numero_cuota", nullable = false)
+    private Integer numeroCuota;
+
+    @Column(name = "cantidad_cuota", nullable = false)
+    private Integer cantidadCuotas;
 }

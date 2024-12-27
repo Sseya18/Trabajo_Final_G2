@@ -162,7 +162,7 @@
 						<a href="#form-nueva-operacion"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR OPERACION</a>
 					</li>
 					<li>
-						<a href="compromiso-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR COMPROMISO DE PAGO</a>
+						<a  id="compromisopago"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR COMPROMISO DE PAGO</a>
 					</li>
 					<li>
 						<a href="client-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE DEUDORES</a>
@@ -265,6 +265,8 @@
 				const urlParams = new URLSearchParams(window.location.search);
 				return urlParams.get(param);
 			}
+			const compromisopago = document.getElementById('compromisopago');
+			compromisopago.href = `compromiso-new.html?deudaId=${getQueryParam('deudaId')}&deudorId=${getQueryParam('deudorId')}`;
 	
 			// Obtener parámetros de la URL
 			const deudaId = getQueryParam('deudaId');

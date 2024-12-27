@@ -43,10 +43,10 @@ public class CompromisoPagoController {
                 .map(compromisoPago -> {
                     compromisoPago.setFechaAcordada(detallesCompromisoPago.getFechaAcordada());
                     compromisoPago.setMontoAcordado(detallesCompromisoPago.getMontoAcordado());
-                    compromisoPago.setCorreoElectronico(detallesCompromisoPago.getCorreoElectronico());
-                    compromisoPago.setTelefono(detallesCompromisoPago.getTelefono());
-                    compromisoPago.setDniDeudor(detallesCompromisoPago.getDniDeudor());
                     compromisoPago.setIdDeudor(detallesCompromisoPago.getIdDeudor());
+                    compromisoPago.setCantidadCuotas(detallesCompromisoPago.getCantidadCuotas());
+                    compromisoPago.setNumeroCuota(detallesCompromisoPago.getNumeroCuota());
+                    compromisoPago.setEstado(detallesCompromisoPago.getEstado());
                     return ResponseEntity.ok(compromisoPagoRepository.save(compromisoPago));
                 })
                 .orElse(ResponseEntity.notFound().build());
