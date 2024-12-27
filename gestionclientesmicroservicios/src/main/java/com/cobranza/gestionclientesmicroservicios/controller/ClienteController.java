@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import com.cobranza.gestionclientesmicroservicios.entidades.Cliente;
 import com.cobranza.gestionclientesmicroservicios.service.ClienteService;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -31,6 +33,11 @@ public class ClienteController {
 
     @PostMapping
     public Cliente guardarCliente(@RequestBody Cliente cliente) {
+        LocalDate fecha = LocalDate.now(); // Obtén la fecha actual
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // Define el formato
+        String fechaComoTexto = fecha.format(formato); // Convierte la fecha a String
+        cliente.setFechaRegistro(fechaComoTexto);
+        
         return clienteService.guardarCliente(cliente);
     }
 

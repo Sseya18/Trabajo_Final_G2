@@ -118,76 +118,74 @@
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-left">
-					<i class="fas fa-plus fa-fw"></i> &nbsp; Generar Compromiso de Pago
+					<i class="fas fa-plus fa-fw"></i> &nbsp; Generar Cliente 
 				</h3>
 				<p class="text-justify">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit nostrum rerum animi natus beatae ex. Culpa blanditiis tempore amet alias placeat, obcaecati quaerat ullam, sunt est, odio aut veniam ratione.
+					Esta vista nos ayuda a generar los clientes
 				</p>
 			</div>
 			
 			<div class="container-fluid">
 				<ul class="full-box list-unstyled page-nav-tabs">
 					<li>
-						<a class="active" href="compromiso-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; GENERAR COMPROMISO DE PAGO</a>
+						<a class="active" href="clientes-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; GENERAR CLIENTE </a> 
+						<a href="clientes-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE CLIENTES</a>
 					</li>
 					<li>
-						<a href="compromiso-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE COMPROMISO DE PAGO</a>
-					</li>
-					<li>
-						<a href="compromiso-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR COMPROMISO DE PAGO</a>
+						<a href="clientes-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR CLIENTE </a>
 					</li>
 				</ul>	
 			</div>
 			
 			<!-- Content -->
 			<div class="container-fluid">
-				<form action="" id="compromisoForm" class="form-neon" autocomplete="off">
+				<form action="" id="clientesForm" class="form-neon" autocomplete="off">
 					<fieldset>
 						<legend><i class="far fa-address-card"></i> &nbsp; Completar Campos</legend>
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="usuario_dni" class="bmd-label-floating">Fecha Acordada</label>
-										<input type="date" pattern="[0-9-]{1,20}" class="form-control" name="usuario_dni" id="fechaAcordada" maxlength="20">
+										<label for="cliente_ruc" class="bmd-label-floating">RUC</label>
+										<input type="number" class="form-control" name="cliente_ruc" id="ruc" maxlength="20">
 									</div>
 								</div>
 								
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="usuario_nombre" class="bmd-label-floating">Telefono</label>
-										<input type="number" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" name="usuario_nombre" id="telefono" maxlength="35">
+										<label for="cliente_nombre" class="bmd-label-floating">Nombre</label>
+										<input type="text" class="form-control" name="cliente_nombre" id="nombre" maxlength="35">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="usuario_correo" class="bmd-label-floating">Correo Electrónico</label>
-										<input type="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" class="form-control" name="usuario_correo" id="correoElectronico" maxlength="35" required>
+										<label for="cliente_telefono" class="bmd-label-floating">Telefono</label>
+										<input type="number" class="form-control" name="cliente_telefono" id="telefono" maxlength="9" required>
 
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="usuario_telefono" class="bmd-label-floating">Monto Acordado</label>
-										<input type="text" pattern="[0-9()+]{1,20}" class="form-control" name="usuario_telefono" id="montoAcordado" maxlength="20">
+										<label for="cliente_direccion" class="bmd-label-floating">Direccion</label>
+										<input type="text" class="form-control" name="cliente_direccion" id="direccion" maxlength="70">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="usuario_direccion" class="bmd-label-floating">Estado</label>
-										<input type="text" pattern="[a-zA-Z0-99áéíóúÁÉÍÓÚñÑ()# ]{1,190}" class="form-control" name="usuario_direccion" id="estado" maxlength="190">
+										<label for="cliente_nro_deudores_asignados" class="bmd-label-floating">Número de Deudores Asignados</label>
+										<input type="number" class="form-control" name="cliente_nro_deudores_asignados" id="nro_deudores_asignados" maxlength="10">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="usuario_direccion" class="bmd-label-floating">ID Deudor</label>
-										<input type="text" pattern="[a-zA-Z0-99áéíóúÁÉÍÓÚñÑ()# ]{1,190}" class="form-control" name="usuario_direccion" id="idDeudor" maxlength="190">
+										<label for="cliente_monto_total_deuda" class="bmd-label-floating">Monto Total Deuda</label>
+										<input type="number" class="form-control" name="cliente_monto_total_deuda" id="monto_total_deuda" maxlength="10">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="usuario_direccion" class="bmd-label-floating">DNI Deudor</label>
-										<input type="text" pattern="[a-zA-Z0-99áéíóúÁÉÍÓÚñÑ()# ]{1,190}" class="form-control" name="usuario_direccion" id="dniDeudor" maxlength="190">
+										<label for="cliente_monto_saldado" class="bmd-label-floating">Monto Saldado</label>
+										<input type="number" class="form-control" name="cliente_monto_saldado" id="monto_saldado" maxlength="10">
 									</div>
 								</div>
 							</div>
@@ -230,21 +228,24 @@
 	<script src="./js/main.js" ></script>
 
 	<script>
-        document.getElementById('compromisoForm').addEventListener('submit', async function(event) {
+        document.getElementById('clientesForm').addEventListener('submit', async function(event) {
             event.preventDefault();
-            
+
             const data = {
-                fechaAcordada: document.getElementById('fechaAcordada').value,
-                telefono: document.getElementById('telefono').value,
-                correoElectronico: document.getElementById('correoElectronico').value,
-                montoAcordado: document.getElementById('montoAcordado').value,
-                estado: document.getElementById('estado').value,
-                idDeudor: document.getElementById('idDeudor').value,
-                dniDeudor: document.getElementById('dniDeudor').value,
+				ruc: document.getElementById('ruc').value,
+				nombre: document.getElementById('nombre').value,
+				telefono: document.getElementById('telefono').value,
+				direccion: document.getElementById('direccion').value,
+				fechaRegistro: null,
+				nroDeudoresAsignados: document.getElementById('nro_deudores_asignados').value,
+				montoTotalDeuda: document.getElementById('monto_total_deuda').value,
+				montoSaldado: document.getElementById('monto_saldado').value,
             };
 
+			console.log(data)
+
             try {
-                const response = await fetch('/api/v1/compromisopago', {
+                const response = await fetch('/api/v1/clientes', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -253,10 +254,10 @@
                 });
 
                 if (response.ok) {
-                    alert('Compromiso de pago registrado exitosamente');
-                    document.getElementById('compromisoForm').reset();
+                    alert('Cliente registrado exitosamente');
+                    document.getElementById('clientesForm').reset();
                 } else {
-                    alert('Error al registrar el compromiso de pago');
+                    alert('Error al registrar el Cliente');
                 }
             } catch (error) {
                 console.error(error);

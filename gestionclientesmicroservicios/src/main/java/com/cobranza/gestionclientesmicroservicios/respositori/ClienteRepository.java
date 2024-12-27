@@ -8,5 +8,4 @@ import com.cobranza.gestionclientesmicroservicios.entidades.Cliente;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     // Métodos personalizados (si es necesario) pueden añadirse aquí
-    Cliente findByEmail(String email);
 }
