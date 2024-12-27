@@ -43,7 +43,7 @@
 					<i class="far fa-times-circle show-nav-lateral"></i>
 					<img src="./assets/avatar/Avatar.png" class="img-fluid" alt="Avatar">
 					<figcaption class="roboto-medium text-center">
-						Carlos Alfaro <br><small class="roboto-condensed-light">Web Developer</small>
+						<span id="nombre"> Alfaro</span> <br><small class="roboto-condensed-light">Id: <span id="operador"></span></small>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -58,10 +58,10 @@
 							<ul>
 								<li>
 
-									<a href="deudores-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de deudores</a>
+									<a href="deuda-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de deudores</a>
 								</li>
 								<li>
-									<a href="deudor-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar deudor</a>
+									<a href="deuda-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar deudor</a>
 
 								</li>
 							</ul>
@@ -104,23 +104,20 @@
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-left">
-					<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE COMPROMISOS DE PAGOS
+					<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE DEUDAS
 				</h3>
 				<p class="text-justify">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit nostrum rerum animi natus beatae ex. Culpa blanditiis tempore amet alias placeat, obcaecati quaerat ullam, sunt est, odio aut veniam ratione.
+					En esta sección se muestran todas las deudas asignadas al operador. Puedes usar los botones de acción para registrar nuevas operaciones.
 				</p>
 			</div>
 			
 			<div class="container-fluid">
 				<ul class="full-box list-unstyled page-nav-tabs">
 					<li>
-						<a href="compromiso-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; GENERAR COMPROMISO DE PAGO</a>
+						<a class="active" href="deuda-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE DEUDAS</a>
 					</li>
 					<li>
-						<a class="active" href="compromiso-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE COMPROMISOS DE PAGOS</a>
-					</li>
-					<li>
-						<a href="compromiso-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR COMPROMISO DE PAGO</a>
+						<a href=""><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR DEUDAS</a>
 					</li>
 				</ul>	
 			</div>
@@ -131,14 +128,17 @@
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-								<th>ID</th>
-								<th>FECHA ACORDADA</th>
+								<th>PRIORIDAD</th>
+								<th>TIPO</th>
+								<th>NOMBRES</th>
 								<th>TELEFONO</th>
-								<th>CORREO ELECTRONICO</th>
-								<th>MONTO ACORDADO</th>
+								<th>ORIGEN</th>
+								<th>PRODUCTO</th>
+								<th>MONTO DEUDA</th>
+								<th>F.Vencimiento</th>
+								<th>F.Operacion</th>
 								<th>ESTADO</th>
-								<th>ID DEUDOR</th>
-								<th>DNI DEUDOR</th>
+								<th>OPERACIONES</th>
 							</tr>
 						</thead>
 						<tbody id="deuda">
@@ -206,12 +206,20 @@
             tbody.innerHTML = data.content.map(deuda => `
                 <tr>
                     <td>${deuda.prioridad}</td>
+                    <td>${deuda.tipo}</td>
+                    <td>${deuda.nombres}</td>
+                    <td>${deuda.telefono}</td>
                     <td>${deuda.origen}</td>
                     <td>${deuda.producto}</td>
                     <td>${deuda.montoDeuda}</td>
-                    <td>${deuda.tipoMoneda}</td>
-                    <td>${deuda.dscCompania}</td>
-                    <td>${deuda.fechaVencimiento}</td>
+					<td>${deuda.fechaVencimiento}</td>
+					<td>${deuda.fechaOperacionUltima}</td>
+					<td>${deuda.estado}</td>
+					<td>
+							<a href="operaciones-update.html?deudaId=${deuda.deudaId}&deudorId=${deuda.operadorId}" class="btn btn-success">
+								Ver Operaciones
+							</a>
+					</td>
                 </tr>
             `).join('');
 
@@ -236,5 +244,7 @@
         // Inicializa la primera carga de datos
         renderDeudas();
     </script>
+	<script src="./js/seguridad.js"></script>
+	<script src="./js/renderizar.js"></script>
 </body>
 </html>
