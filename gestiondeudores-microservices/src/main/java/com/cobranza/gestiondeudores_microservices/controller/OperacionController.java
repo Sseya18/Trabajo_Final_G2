@@ -10,18 +10,18 @@ import com.cobranza.gestiondeudores_microservices.servicios.OperacionService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/gestion/deudas/operaciones")
+@RequestMapping("/api/v1/deudas/operaciones")
 public class OperacionController {
 
     @Autowired
     private OperacionService operacionService;
 
     // Registrar una operación para un deudor
-    @PostMapping("/{deudorId}")
+    @PostMapping("/{deudaId}")
     public ResponseEntity<Operacion> registrarOperacion(
-            @PathVariable Long deudorId, @RequestBody Operacion operacion) {
+            @PathVariable Long deudaId, @RequestBody Operacion operacion) {
         try {
-            Operacion operacionGuardada = operacionService.saveOperacion(deudorId, operacion);
+            Operacion operacionGuardada = operacionService.saveOperacion(deudaId, operacion);
             return ResponseEntity.ok(operacionGuardada);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(null);
@@ -29,9 +29,9 @@ public class OperacionController {
     }
 
     // Obtener operaciones de un deudor
-    @GetMapping("/{deudorId}")
-    public ResponseEntity<List<Operacion>> obtenerOperacionesDeDeudor(@PathVariable Long deudorId) {
-        List<Operacion> operaciones = operacionService.getOperacionesByDeudorId(deudorId);
+    @GetMapping("/{deudaId}")
+    public ResponseEntity<List<Operacion>> obtenerOperacionesDeDeudor(@PathVariable Long deudaId) {
+        List<Operacion> operaciones = operacionService.getOperacionesByDeudaId(deudaId);
         if (operaciones.isEmpty()) {
             return ResponseEntity.notFound().build();
         }

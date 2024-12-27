@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Lista de deudores</title>
+	<title>Actualizar cliente</title>
 
 	<!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href="./css/normalize.css">
@@ -32,8 +32,8 @@
 
 </head>
 <body>
-	
-	<!-- Main container -->
+    
+    <!-- Main container -->
 	<main class="full-box main-container">
 		<!-- Nav lateral -->
 		<section class="full-box nav-lateral">
@@ -43,7 +43,7 @@
 					<i class="far fa-times-circle show-nav-lateral"></i>
 					<img src="./assets/avatar/Avatar.png" class="img-fluid" alt="Avatar">
 					<figcaption class="roboto-medium text-center">
-						<span id="nombre"> Alfaro</span> <br><small class="roboto-condensed-light">Id: <span id="operador"></span></small>
+						Carlos Alfaro <br><small class="roboto-condensed-light">Web Developer</small>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -86,6 +86,7 @@
 				</nav>
 			</div>
 		</section>
+
 		<!-- Page content -->
 		<section class="full-box page-content">
 			<nav class="full-box navbar-info">
@@ -103,69 +104,65 @@
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-left">
-					<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE DEUDORES
+					<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE COMPROMISOS DE PAGOS
 				</h3>
 				<p class="text-justify">
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit nostrum rerum animi natus beatae ex. Culpa blanditiis tempore amet alias placeat, obcaecati quaerat ullam, sunt est, odio aut veniam ratione.
 				</p>
 			</div>
-
+			
 			<div class="container-fluid">
 				<ul class="full-box list-unstyled page-nav-tabs">
 					<li>
-						<a class="active" href="client-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE DEUDORES</a>
+						<a href="compromiso-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; GENERAR COMPROMISO DE PAGO</a>
 					</li>
 					<li>
-						<a href="client-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR DEUDOR</a>
+						<a class="active" href="compromiso-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE COMPROMISOS DE PAGOS</a>
+					</li>
+					<li>
+						<a href="compromiso-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR COMPROMISO DE PAGO</a>
 					</li>
 				</ul>	
 			</div>
 			
-			<!-- Content here-->
+			<!-- Content -->
 			<div class="container-fluid">
 				<div class="table-responsive">
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
 								<th>ID</th>
-								<th>PRIORIDAD</th>
-								<th>TIPO</th>
-								<th>NOMBRE</th>
+								<th>FECHA ACORDADA</th>
 								<th>TELEFONO</th>
-								<th>ORIGEN</th>
-								<th>PRODUCTO</th>
-								<th>MONTO DEUDA</th>
-								<Th>ULTIMO CONTACO</Th>
-								<th>DETALLE</th>
-								<th>OPERACIONES</th>
+								<th>CORREO ELECTRONICO</th>
+								<th>MONTO ACORDADO</th>
+								<th>ESTADO</th>
+								<th>ID DEUDOR</th>
+								<th>DNI DEUDOR</th>
 							</tr>
 						</thead>
-						<tbody>
-
+						<tbody id="deuda">
+                            <!-- Aquí se insertarán las deudas -->
+							
 						</tbody>
 					</table>
 				</div>
 				<nav aria-label="Page navigation example">
 					<ul class="pagination justify-content-center">
-						<li class="page-item disabled">
-							<a class="page-link" href="#" tabindex="-1">Previous</a>
-						</li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item">
-							<a class="page-link" href="#">Next</a>
-						</li>
+						<div class="pagination">
+                            <button id="prevPage" disabled>Anterior</button>
+                            <span id="currentPage">Página 1</span>
+                            <button id="nextPage">Siguiente</button>
+                        </div>
 					</ul>
 				</nav>
 			</div>
 
 		</section>
 	</main>
-	
 
-	
-	<!--=============================================
+    
+    <!--=============================================
 	=            Include JavaScript files           =
 	==============================================-->
 	<!-- jQuery V3.4.1 -->
@@ -185,52 +182,59 @@
 	<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
 
 	<script src="./js/main.js" ></script>
-	<script>// Función para obtener los datos y renderizarlos en el tbody
-		function renderDeudores() {
-		// Realiza una solicitud GET al endpoint
-		fetch('http://localhost:8080/gestion/deudas/deudores')
-			.then(response => {
-				if (!response.ok) {
-					throw new Error('Error al obtener los datos');
-				}
-				return response.json(); // Convierte la respuesta a JSON
-			})
-			.then(data => {
-				const tbody = document.querySelector('tbody'); // Selecciona el tbody donde se van a insertar las filas
-				tbody.innerHTML = ''; // Limpia el contenido existente del tbody
-	
-				// Itera sobre el objeto JSON para construir las filas
-				data.forEach(deudor => {
-					const row = `
-						<tr class="text-center">
-							<td>${deudor.id}</td>
-							<td>${deudor.prioridad}</td>
-							<td>${deudor.tipo}</td>
-							<td>${deudor.nombres}</td>
-							<td>${deudor.telefono}</td>
-							<td>${deudor.origen}</td>
-							<td>${deudor.producto}</td>
-							<td>${deudor.montoDeuda}</td>
-							<td>${deudor.fechaContacto}</td>
-							<td>${deudor.detalle}</td>
-							<td>
-							<a href="operaciones-update.html?deudorId=${deudor.id}" class="btn btn-success">
-								Ver Operaciones
-							</a>
-							</td>
-						</tr>
-					`;
-					tbody.innerHTML += row; // Agrega la fila al tbody
-				});
-			})
-			.catch(error => {
-				console.error('Error:', error);
-			});
-	}
-	
-	// Llama a la función para renderizar los datos al cargar la página
-	document.addEventListener('DOMContentLoaded', renderDeudores);</script>
+    <script>
+        let currentPage = 0;
+        const pageSize = 10; // Número de registros por página
+        const operadorId = 1; // Cambiar según tu caso
+
+        async function fetchDeudas(page, size) {
+            try {
+                const response = await fetch(`http://localhost:8080/api/v1/deudas/detalles?operadorId=${operadorId}&page=${page}&size=${size}`);
+                if (!response.ok) throw new Error('Error al obtener las deudas');
+                return await response.json();
+            } catch (error) {
+                console.error('Error al obtener las deudas:', error);
+                return null;
+            }
+        }
+
+        async function renderDeudas() {
+            const data = await fetchDeudas(currentPage, pageSize);
+            if (!data) return;
+
+            const tbody = document.querySelector('#deuda');
+            tbody.innerHTML = data.content.map(deuda => `
+                <tr>
+                    <td>${deuda.prioridad}</td>
+                    <td>${deuda.origen}</td>
+                    <td>${deuda.producto}</td>
+                    <td>${deuda.montoDeuda}</td>
+                    <td>${deuda.tipoMoneda}</td>
+                    <td>${deuda.dscCompania}</td>
+                    <td>${deuda.fechaVencimiento}</td>
+                </tr>
+            `).join('');
+
+            // Actualiza los botones de paginación
+            document.querySelector('#prevPage').disabled = data.number === 0;
+            document.querySelector('#nextPage').disabled = data.number + 1 === data.totalPages;
+            document.querySelector('#currentPage').innerText = `Página ${data.number + 1}`;
+        }
+
+        document.querySelector('#prevPage').addEventListener('click', () => {
+            if (currentPage > 0) {
+                currentPage--;
+                renderDeudas();
+            }
+        });
+
+        document.querySelector('#nextPage').addEventListener('click', () => {
+            currentPage++;
+            renderDeudas();
+        });
+
+        // Inicializa la primera carga de datos
+        renderDeudas();
+    </script>
 </body>
-<script src="./js/seguridad.js" ></script>
-<script src="./js/renderizar.js"></script>
 </html>

@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cobranza.gestiondeudores_microservices.entidades.Deudor;
+import com.cobranza.gestiondeudores_microservices.entidades.Deuda;
 import com.cobranza.gestiondeudores_microservices.entidades.Operacion;
 import com.cobranza.gestiondeudores_microservices.repositori.OperacionRepository;
 
@@ -17,23 +17,20 @@ public class OperacionService {
     private OperacionRepository operacionRepository;
 
     @Autowired
-    private DeudorService deudorService;
+    private DeudaService deudaService;
 
-    public Operacion saveOperacion(Long deudorId, Operacion operacion) {
-        // Asignar deudor a la operación
-        Deudor deudor = deudorService.getDeudorById(deudorId);
-        LocalDate fechaContacto = LocalDate.now();
-        if (deudor == null) {
-            throw new IllegalArgumentException("Deudor no encontrado");
+    public Operacion saveOperacion(Long deudaId, Operacion operacion) {
+        Deuda deuda = deudaService.findById(deudaId);
+        if (deuda == null) {
+            throw new IllegalArgumentException("Deuda no encontrado");
         }
-        deudor.setFechaContacto(fechaContacto);
-        deudor.setDetalle(operacion.getResultado());
-        operacion.setDeudorId(deudorId);
+        operacion.setDeudaId(deudaId);
+        operacion.setFecha(LocalDate.now());
         return operacionRepository.save(operacion);
     }
 
-    public List<Operacion> getOperacionesByDeudorId(Long deudorId) {
-        return operacionRepository.findAllByDeudorId(deudorId);
+    public List<Operacion> getOperacionesByDeudaId(Long deudaId) {
+        return operacionRepository.findAllByDeudaId(deudaId);
     }
 }
 

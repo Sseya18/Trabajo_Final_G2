@@ -10,7 +10,7 @@ import com.cobranza.gestiondeudores_microservices.entidades.Operador;
 import com.cobranza.gestiondeudores_microservices.servicios.OperadorService;
 
 @RestController
-@RequestMapping("/gestion/deudas/operadores")
+@RequestMapping("/api/v1/deudas/operadores")
 public class OperadorController {
 
     @Autowired

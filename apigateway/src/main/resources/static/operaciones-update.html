@@ -43,7 +43,7 @@
 					<i class="far fa-times-circle show-nav-lateral"></i>
 					<img src="./assets/avatar/Avatar.png" class="img-fluid" alt="Avatar">
 					<figcaption class="roboto-medium text-center">
-						Carlos Alfaro <br><small class="roboto-condensed-light">Web Developer</small>
+						<span id="nombre"> Alfaro</span> <br><small class="roboto-condensed-light">Id: <span id="operador"></span></small>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -58,10 +58,10 @@
 							<ul>
 								<li>
 
-									<a href="deudores-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de deudores</a>
+									<a href="deuda-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de deudores</a>
 								</li>
 								<li>
-									<a href="deudor-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar deudor</a>
+									<a href="deuda-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar deudor</a>
 
 								</li>
 							</ul>
@@ -111,6 +111,51 @@
 				</p>
 			</div>
 
+			<!-- Content here-->
+			<h4 class="text-left">
+				 &nbsp; Detalles del Deudor
+			</h4>
+			<div class="container-fluid">
+				<div class="table-responsive">
+					<table class="table table-dark table-sm">
+						<thead>
+							<tr class="text-center roboto-medium">
+								<th>TIPO</th>
+								<th>TIPO_DOC</th>
+								<th>NRODOC</th>
+								<th>NOMBRE</th>
+								<th>TELEFONO</th>
+							</tr>
+						</thead>
+						<tbody id="deudor">
+						</tbody>
+					</table>
+				</div>
+			<h4 class="text-left">
+					&nbsp; Detalles de la Deuda
+			</h4>
+			
+			<!-- Content here-->
+			<div class="container-fluid">
+				<div class="table-responsive">
+					<table class="table table-dark table-sm">
+						<thead>
+							<tr class="text-center roboto-medium">
+								<th>PRIORIDAD</th>
+								<th>ORIGEN</th>
+								<th>PRODUCTO</th>
+								<th>MONTODEUDA</th>
+								<th>TIPO_MONEDA</th>
+								<th>DSCCOMPANIA</th>
+								<TH>FECHAVENCIMIENTO</TH>
+							</tr>
+						</thead>
+						<tbody id="deuda">
+
+						</tbody>
+					</table>
+				</div>
+
 			<div class="container-fluid">
 				<ul class="full-box list-unstyled page-nav-tabs">
 					<li>
@@ -130,12 +175,12 @@
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-								<th>ID</th>
 								<th>DESCRIPCION</th>
 								<th>RESULTADO</th>
+								<th>FECHA</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="operaciones"> 
 						</tbody>
 					</table>
 				</div>
@@ -213,66 +258,111 @@
 	<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
 
 	<script src="./js/main.js" ></script>
-
-	<script>// Función para obtener los datos y renderizarlos en el tbody
-	document.addEventListener('DOMContentLoaded', () => {
-    // Función para obtener el parámetro de la URL
-    function getQueryParam(param) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(param);
-    }
-
-    // Obtener el deudorId de la URL
-    const deudorId = getQueryParam('deudorId');
-
-    // Verificar si el deudorId existe
-    if (!deudorId) {
-        console.error('El deudorId no está especificado en la URL.');
-        return;
-    }
-
-    // Función para renderizar las operaciones del deudor
-    function renderOperaciones() {
-        fetch(`http://localhost:8080/gestion/deudas/operaciones/${deudorId}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error al obtener las operaciones');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const tbody = document.querySelector('tbody');
-                tbody.innerHTML = '';
-
-                data.forEach(operacion => {
-                    const row = `
-                        <tr class="text-center">
-                            <td>${operacion.id}</td>
-                            <td>${operacion.descripcion}</td>
-                            <td>${operacion.resultado}</td>
-                        </tr>
-                    `;
-                    tbody.innerHTML += row;
-                });
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    }
-
-    // Llamar a la función para renderizar las operaciones
-    renderOperaciones();
-	});
+	<script>
+		document.addEventListener('DOMContentLoaded', async () => {
+			// Función para obtener el parámetro de la URL
+			function getQueryParam(param) {
+				const urlParams = new URLSearchParams(window.location.search);
+				return urlParams.get(param);
+			}
+	
+			// Obtener parámetros de la URL
+			const deudaId = getQueryParam('deudaId');
+			const deudorId = getQueryParam('deudorId');
+	
+			if (!deudorId || !deudaId) {
+				console.error('El deudorId o deudaId no están especificados en la URL.');
+				return;
+			}
+	
+			async function renderDeuda() {
+				try {
+					const response = await fetch(`http://localhost:8080/api/v1/deudas/${deudaId}`);
+					if (!response.ok) throw new Error('Error al obtener las deudas');
+					const data = await response.json();
+	
+					// Validar si es array o un objeto único
+					const dataArray = Array.isArray(data) ? data : [data];
+					const tbodyDeuda = document.querySelector('#deuda');
+					tbodyDeuda.innerHTML = dataArray.map(deuda => `
+						<tr class="text-center">
+							<td>${deuda.prioridad}</td>
+							<td>${deuda.origen}</td>
+							<td>${deuda.producto}</td>
+							<td>${deuda.montoDeuda}</td>
+							<td>${deuda.tipoMoneda}</td>
+							<td>${deuda.descCompania}</td>
+							<td>${deuda.fechaVencimiento}</td>
+						</tr>
+					`).join('');
+				} catch (error) {
+					console.error('Error en renderDeuda:', error);
+				}
+			}
+	
+			async function renderDeudor() {
+				try {
+					const response = await fetch(`http://localhost:8080/api/v1/deudas/deudores/${deudorId}`);
+					if (!response.ok) throw new Error('Error al obtener el deudor');
+					const data = await response.json();
+	
+					// Validar si es array o un objeto único
+					const dataArray = Array.isArray(data) ? data : [data];
+					const tbodyDeudor = document.querySelector('#deudor');
+					tbodyDeudor.innerHTML = dataArray.map(deudor => `
+						<tr class="text-center">
+							<td>${deudor.tipo}</td>
+							<td>${deudor.tipoDoc}</td>
+							<td>${deudor.numDoc}</td>
+							<td>${deudor.nombres}</td>
+							<td>${deudor.telefono}</td>
+						</tr>
+					`).join('');
+				} catch (error) {
+					console.error('Error en renderDeudor:', error);
+				}
+			}
+	
+			async function renderOperaciones() {
+				try {
+					const response = await fetch(`http://localhost:8080/api/v1/deudas/operaciones/${deudorId}`);
+					if (!response.ok) throw new Error('Error al obtener las operaciones');
+					const data = await response.json();
+	
+					// Validar si es array o un objeto único
+					const dataArray = Array.isArray(data) ? data : [data];
+					const tbodyOperaciones = document.querySelector('#operaciones');
+					tbodyOperaciones.innerHTML = dataArray.map(operacion => `
+						<tr class="text-center">
+							<td>${operacion.descripcion}</td>
+							<td>${operacion.resultado}</td>
+							<td>${operacion.fecha}</td>
+						</tr>
+					`).join('');
+				} catch (error) {
+					console.error('Error en renderOperaciones:', error);
+				}
+			}
+	
+			// Renderizar todo
+			await renderDeudor();
+			await renderDeuda();
+			await renderOperaciones();
+		});
 	</script>
+	
 
 	<script>
 		document.addEventListener('DOMContentLoaded', () => {
 			// Obtener el deudorId de la URL
-			const urlParams = new URLSearchParams(window.location.search);
-			const deudorId = urlParams.get('deudorId');
+			function getQueryParam(param) {
+				const urlParams = new URLSearchParams(window.location.search);
+				return urlParams.get(param);
+			}
+			const deudaId = getQueryParam('deudaId');
 
-			if (!deudorId) {
-				console.error('El deudorId no está especificado en la URL.');
+			if (!deudaId) {
+				console.error('la deudaId no está especificado en la URL.');
 				return;
 			}
 
@@ -294,7 +384,7 @@
 				};
 
 				// Realizar la solicitud POST
-				fetch(`http://localhost:8080/gestion/deudas/operaciones/${deudorId}`, {
+				fetch(`http://localhost:8080/api/v1/deudas/operaciones/${deudaId}`, {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
@@ -319,5 +409,6 @@
 			});
 		});
 	</script>
+	<script src="./js/renderizar.js"></script>
 </body>
 </html>

@@ -4,24 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import com.cobranza.gestiondeudores_microservices.entidades.Deudor;
-import com.cobranza.gestiondeudores_microservices.entidades.Operador;
 import com.cobranza.gestiondeudores_microservices.servicios.DeudorService;
-import com.cobranza.gestiondeudores_microservices.servicios.OperadorService;
+
 
 import java.util.List;
 
 @RestController
 
-@RequestMapping("/gestion/deudas/deudores")
+@RequestMapping("/api/v1/deudas/deudores")
 public class DeudorController {
 
     @Autowired
     private DeudorService deudorService;
     
-    @Autowired
-    private OperadorService operadorService;
-
     // Obtener todos los deudores
     @GetMapping
     public ResponseEntity<List<Deudor>> obtenerTodos() {
@@ -43,13 +40,6 @@ public class DeudorController {
     // Crear un nuevo deudor
     @PostMapping
     public ResponseEntity<?> crearDeudor(@RequestBody Deudor deudor) {
-        // Verificar si el operador existe
-        Operador operador = operadorService.getOperadorById(deudor.getOperadorId());
-        if (operador == null) {
-            return ResponseEntity.badRequest().body("El operador especificado no existe.");
-        }
-
-        // Guardar el deudor
         try {
             Deudor deudorGuardado = deudorService.saveDeudor(deudor);
             return ResponseEntity.ok(deudorGuardado);
