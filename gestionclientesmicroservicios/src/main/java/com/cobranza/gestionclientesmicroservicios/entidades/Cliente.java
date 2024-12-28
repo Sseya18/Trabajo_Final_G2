@@ -4,28 +4,23 @@ package com.cobranza.gestionclientesmicroservicios.entidades;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDate;
+// import java.time.LocalDate;
 
 @Entity
 @Data
 public class Cliente {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String nombre;
-
-    private String apellido;
+    private String ruc;
 
     @Column(unique = true, nullable = false)
-    private String email;
-
+    private String nombre;
+    @Column(unique = true)
     private String telefono;
-
+    @Column(unique = true, nullable = false)
     private String direccion;
+    private String fechaRegistro;
 
-    private LocalDate fechaRegistro;
-
-    private String estado; // "ACTIVO" o "INACTIVO"
+    private String nroDeudoresAsignados;
+    private String montoTotalDeuda;
+    private String montoSaldado;
 }

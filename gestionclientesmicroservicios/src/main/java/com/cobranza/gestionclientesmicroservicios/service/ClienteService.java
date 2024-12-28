@@ -30,15 +30,21 @@ public class ClienteService {
     }
 
     public Cliente actualizarCliente(Long id, Cliente clienteActualizado) {
-        return clienteRepository.findById(id).map(cliente -> {
-            cliente.setNombre(clienteActualizado.getNombre());
-            cliente.setApellido(clienteActualizado.getApellido());
-            cliente.setEmail(clienteActualizado.getEmail());
-            cliente.setTelefono(clienteActualizado.getTelefono());
-            cliente.setDireccion(clienteActualizado.getDireccion());
-            cliente.setEstado(clienteActualizado.getEstado());
-            return clienteRepository.save(cliente);
-        }).orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+        return clienteRepository.findById(id).map(
+            cliente -> {
+                cliente.setNombre(clienteActualizado.getNombre());
+                cliente.setTelefono(clienteActualizado.getTelefono());
+                cliente.setDireccion(clienteActualizado.getDireccion());
+                cliente.setFechaRegistro(clienteActualizado.getFechaRegistro());
+                cliente.setNroDeudoresAsignados(clienteActualizado.getNroDeudoresAsignados());
+                cliente.setMontoTotalDeuda(clienteActualizado.getMontoTotalDeuda());
+                cliente.setMontoSaldado(clienteActualizado.getMontoSaldado());
+
+                return clienteRepository.save(cliente);
+            }
+         )
+        .orElseThrow(
+            () -> new RuntimeException("Cliente no encontrado"));
     }
 
     public void eliminarCliente(Long id) {

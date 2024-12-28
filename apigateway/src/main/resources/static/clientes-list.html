@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Actualizar cliente</title>
+	<title>Lista de Clientes</title>
 
 	<!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href="./css/normalize.css">
@@ -32,8 +32,8 @@
 
 </head>
 <body>
-    
-    <!-- Main container -->
+	
+	<!-- Main container -->
 	<main class="full-box main-container">
 		<!-- Nav lateral -->
 		<section class="full-box nav-lateral">
@@ -43,7 +43,7 @@
 					<i class="far fa-times-circle show-nav-lateral"></i>
 					<img src="./assets/avatar/Avatar.png" class="img-fluid" alt="Avatar">
 					<figcaption class="roboto-medium text-center">
-						<span id="nombre"> Alfaro</span> <br><small class="roboto-condensed-light">Id: <span id="operador"></span></small>
+						Josemi Vasquez <br><small class="roboto-condensed-light">Web Developer</small>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -58,10 +58,10 @@
 							<ul>
 								<li>
 
-									<a href="deuda-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de deudores</a>
+									<a href="deudores-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de deudores</a>
 								</li>
 								<li>
-									<a href="deuda-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar deudor</a>
+									<a href="deudor-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar deudor</a>
 
 								</li>
 							</ul>
@@ -76,13 +76,17 @@
 								<li>
 									<a href="compromiso-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Compromisos de Pago</a>
 								</li>
+								<li>
+									<a href="compromiso-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Compromiso de Pago</a>
+								</li>
 							</ul>
 						</li>
+
 						<li>
 							<a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Clientes <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
-									<a href="clientes-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Generar Cliente </a>
+								<a href="clientes-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Generar Cliente </a>
 								</li>
 								<li>
 									<a href="clientes-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Clientes</a>
@@ -94,7 +98,6 @@
 				</nav>
 			</div>
 		</section>
-
 		<!-- Page content -->
 		<section class="full-box page-content">
 			<nav class="full-box navbar-info">
@@ -112,65 +115,66 @@
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-left">
-					<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE DEUDAS
+					<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE CLIENTES 
 				</h3>
 				<p class="text-justify">
-					En esta sección se muestran todas las deudas asignadas al operador. Puedes usar los botones de acción para registrar nuevas operaciones.
+					Esta vista sirve para la gestión de los clientes
 				</p>
 			</div>
-			
+
 			<div class="container-fluid">
 				<ul class="full-box list-unstyled page-nav-tabs">
 					<li>
-						<a class="active" href="deuda-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE DEUDAS</a>
+						<a class="active" href="client-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE CLIENTES</a>
 					</li>
 					<li>
-						<a href=""><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR DEUDAS</a>
+						<a href="client-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR CLIENTE</a>
 					</li>
 				</ul>	
 			</div>
 			
-			<!-- Content -->
+			<!-- Content here-->
 			<div class="container-fluid">
 				<div class="table-responsive">
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-								<th>PRIORIDAD</th>
-								<th>TIPO</th>
-								<th>NOMBRES</th>
+								<th>RUC</th>
+								<th>NOMBRE</th>
 								<th>TELEFONO</th>
-								<th>ORIGEN</th>
-								<th>PRODUCTO</th>
-								<th>MONTO DEUDA</th>
-								<th>F.Vencimiento</th>
-								<th>F.Operacion</th>
-								<th>ESTADO</th>
-								<th>OPERACIONES</th>
+								<th>DIRECCION</th>
+								<th>FECHA DE REGISTRO</th>
+								<th>NUMERO DE DEUDORES ASIGNADOS</th>
+								<th>MONTO TOTAL DE DEUDA</th>
+								<th>MONTO SALDADO</th>
 							</tr>
 						</thead>
-						<tbody id="deuda">
-                            <!-- Aquí se insertarán las deudas -->
-							
+						<tbody>
+
 						</tbody>
 					</table>
 				</div>
 				<nav aria-label="Page navigation example">
 					<ul class="pagination justify-content-center">
-						<div class="pagination">
-                            <button id="prevPage" disabled>Anterior</button>
-                            <span id="currentPage">Página 1</span>
-                            <button id="nextPage">Siguiente</button>
-                        </div>
+						<li class="page-item disabled">
+							<a class="page-link" href="#" tabindex="-1">Previous</a>
+						</li>
+						<li class="page-item"><a class="page-link" href="#">1</a></li>
+						<li class="page-item"><a class="page-link" href="#">2</a></li>
+						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item">
+							<a class="page-link" href="#">Next</a>
+						</li>
 					</ul>
 				</nav>
 			</div>
 
 		</section>
 	</main>
+	
 
-    
-    <!--=============================================
+	
+	<!--=============================================
 	=            Include JavaScript files           =
 	==============================================-->
 	<!-- jQuery V3.4.1 -->
@@ -190,69 +194,49 @@
 	<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
 
 	<script src="./js/main.js" ></script>
-    <script>
-        let currentPage = 0;
-        const pageSize = 10; // Número de registros por página
-        const operadorId = 1; // Cambiar según tu caso
-
-        async function fetchDeudas(page, size) {
-            try {
-                const response = await fetch(`http://localhost:8080/api/v1/deudas/detalles?operadorId=${operadorId}&page=${page}&size=${size}`);
-                if (!response.ok) throw new Error('Error al obtener las deudas');
-                return await response.json();
-            } catch (error) {
-                console.error('Error al obtener las deudas:', error);
-                return null;
-            }
-        }
-
-        async function renderDeudas() {
-            const data = await fetchDeudas(currentPage, pageSize);
-            if (!data) return;
-
-            const tbody = document.querySelector('#deuda');
-            tbody.innerHTML = data.content.map(deuda => `
-                <tr>
-                    <td>${deuda.prioridad}</td>
-                    <td>${deuda.tipo}</td>
-                    <td>${deuda.nombres}</td>
-                    <td>${deuda.telefono}</td>
-                    <td>${deuda.origen}</td>
-                    <td>${deuda.producto}</td>
-                    <td>${deuda.montoDeuda}</td>
-					<td>${deuda.fechaVencimiento}</td>
-					<td>${deuda.fechaOperacionUltima}</td>
-					<td>${deuda.estado}</td>
-					<td>
-							<a href="operaciones-update.html?deudaId=${deuda.deudaId}&deudorId=${deuda.operadorId}" class="btn btn-success">
+	<script>// Función para obtener los datos y renderizarlos en el tbody
+		function renderClientes() {
+		// Realiza una solicitud GET al endpoint
+		fetch('http://localhost:8080/api/v1/clientes')
+			.then(response => {
+				if (!response.ok) {
+					throw new Error('Error al obtener los datos');
+				}
+				return response.json(); // Convierte la respuesta a JSON
+			})
+			.then(data => {
+				const tbody = document.querySelector('tbody'); // Selecciona el tbody donde se van a insertar las filas
+				tbody.innerHTML = ''; // Limpia el contenido existente del tbody
+	
+				// Itera sobre el objeto JSON para construir las filas
+				data.forEach(cliente => {
+					const row = `
+						<tr class="text-center">
+							<td>${cliente.ruc}</td>
+							<td>${cliente.nombre}</td>
+							<td>${cliente.telefono}</td>
+							<td>${cliente.direccion}</td>
+							<td>${cliente.fechaRegistro}</td>
+							<td>${cliente.nroDeudoresAsignados}</td>
+							<td>${cliente.montoTotalDeuda}</td>
+							<td>${cliente.montoSaldado}</td>
+							<td>
+							<a href="operaciones-update.html?deudorId=${cliente.ruc}" class="btn btn-success">
 								Ver Operaciones
 							</a>
-					</td>
-                </tr>
-            `).join('');
-
-            // Actualiza los botones de paginación
-            document.querySelector('#prevPage').disabled = data.number === 0;
-            document.querySelector('#nextPage').disabled = data.number + 1 === data.totalPages;
-            document.querySelector('#currentPage').innerText = `Página ${data.number + 1}`;
-        }
-
-        document.querySelector('#prevPage').addEventListener('click', () => {
-            if (currentPage > 0) {
-                currentPage--;
-                renderDeudas();
-            }
-        });
-
-        document.querySelector('#nextPage').addEventListener('click', () => {
-            currentPage++;
-            renderDeudas();
-        });
-
-        // Inicializa la primera carga de datos
-        renderDeudas();
-    </script>
-	<script src="./js/seguridad.js"></script>
-	<script src="./js/renderizar.js"></script>
+							</td>
+						</tr>
+					`;
+					tbody.innerHTML += row; // Agrega la fila al tbody
+				});
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
+	}
+	
+	// Llama a la función para renderizar los datos al cargar la página
+	document.addEventListener('DOMContentLoaded', renderClientes);</script>
 </body>
+<script src="./js/seguridad.js" ></script>
 </html>
