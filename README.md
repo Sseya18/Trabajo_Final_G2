@@ -48,6 +48,4 @@ El desarrollo de este proyecto ha sido posible gracias a la colaboración de:
 - Para una experiencia óptima, verifica que todos los servicios relacionados estén activos antes de iniciar la plataforma.
 - Si encuentras problemas durante la instalación, revisa los logs generados para identificar posibles errores y sus soluciones.
 
---- 
 
-Si deseas más ajustes o detalles adicionales, no dudes en mencionarlo. 😊
